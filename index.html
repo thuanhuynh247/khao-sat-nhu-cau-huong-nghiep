@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Khảo sát nhu cầu Hướng Nghiệp tại Huế & miền Trung · Mr Hướng Nghiệp</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F4F9F6;--surface:#FFFFFF;--sunken:#EAF2EC;--forest:#1A3D2B;
+    --ink:#0F2419;--ink-muted:#3D5A49;--ink-subtle:#5D7A68;--ink-inverse:#F4F9F6;
+    --bronze:#C9963A;--bronze-soft:#E8B86D;--green:#2E8B57;--green-deep:#1F6B41;
+    --line:rgba(15,36,25,0.14);--line-strong:rgba(15,36,25,0.20);
+    --font:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif;
+    --shadow-sm:0 1px 3px rgba(15,36,25,0.10);
+    --shadow-md:0 4px 16px rgba(15,36,25,0.12);
+    --shadow-lg:0 14px 40px rgba(15,36,25,0.16);
+    --container:920px;--gutter:64px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:var(--font);background:var(--paper);color:var(--ink);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:var(--container);margin:0 auto;padding:0 var(--gutter)}
+  a{color:var(--green-deep);text-underline-offset:3px}
+  strong{font-weight:700;color:var(--ink)}
+  em{font-style:italic;color:var(--ink-muted)}
+  .rail{max-width:var(--container);margin:0 auto;padding:0 var(--gutter)}
+  .rail-inner{border-top:6px solid var(--forest);position:relative}
+  .rail-inner::after{content:"";position:absolute;left:0;right:0;top:9px;border-top:1px solid var(--line)}
+  .topbar{padding:22px 0 26px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  .lockup{display:flex;align-items:center;gap:12px}
+  .lockup svg{display:block;flex:none}
+  .lockup .lk-text{display:flex;flex-direction:column;line-height:1}
+  .lockup .lk-name{font-weight:800;font-size:17px;letter-spacing:-0.01em}
+  .lockup .lk-name .gold{color:var(--bronze)}
+  .lockup .lk-sub{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-subtle);margin-top:4px}
+  .btn-mini{font-family:var(--font);font-size:13px;font-weight:700;border:1px solid var(--line-strong);background:transparent;color:var(--ink);border-radius:999px;padding:8px 16px;cursor:pointer}
+  .btn-mini:hover{background:rgba(15,36,25,.05)}
+
+  .hero{background:var(--forest);color:var(--ink-inverse);position:relative;overflow:hidden}
+  .hero::after{content:"";position:absolute;right:-8%;top:-30%;width:480px;height:480px;border-radius:50%;background:radial-gradient(circle,rgba(201,150,58,.16),transparent 62%);pointer-events:none}
+  .hero-in{padding:64px 0 68px;max-width:62ch;position:relative;z-index:1}
+  .kicker{font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--bronze-soft);margin-bottom:20px}
+  h1{font-size:clamp(32px,5vw,52px);font-weight:800;line-height:1.05;letter-spacing:-0.03em;text-wrap:balance;margin-bottom:20px}
+  h1 .gold{color:var(--bronze-soft)}
+  .hero .lede{font-size:clamp(16px,2.2vw,19px);color:rgba(244,249,246,.86);max-width:60ch}
+  .hero .trust{margin-top:24px;font-size:14px;color:rgba(244,249,246,.7);border-left:3px solid var(--bronze);padding-left:16px;max-width:58ch}
+
+  main{padding:56px 0 40px}
+  .step-head{margin-bottom:28px}
+  .sec-label{display:flex;align-items:center;gap:10px;font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--bronze);margin-bottom:14px}
+  h2{font-size:clamp(24px,3.4vw,34px);font-weight:800;line-height:1.12;letter-spacing:-0.025em;color:var(--ink);margin-bottom:12px;text-wrap:balance}
+  p.intro{color:var(--ink-muted);max-width:64ch;margin-bottom:8px}
+
+  /* progress */
+  .progress{display:flex;gap:6px;margin:0 0 32px}
+  .progress .seg{flex:1;height:5px;border-radius:999px;background:var(--sunken)}
+  .progress .seg.on{background:var(--bronze)}
+  .progress .seg.done{background:var(--green)}
+
+  /* audience picker */
+  .aud-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px}
+  .aud-card{text-align:left;background:var(--surface);border:1.5px solid var(--line);border-radius:8px;padding:24px;cursor:pointer;font-family:var(--font);transition:border-color .15s,box-shadow .15s,transform .12s}
+  .aud-card:hover{border-color:var(--bronze);box-shadow:var(--shadow-md);transform:translateY(-2px)}
+  .aud-card .a-ic{width:34px;height:34px;margin-bottom:14px}
+  .aud-card h3{font-size:19px;font-weight:800;letter-spacing:-0.01em;color:var(--ink);margin-bottom:6px}
+  .aud-card p{font-size:14px;color:var(--ink-subtle);margin:0}
+
+  /* question blocks */
+  .qwrap{display:none}
+  .qwrap.active{display:block;animation:fade .25s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .q{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:26px 28px;margin-bottom:16px;box-shadow:var(--shadow-sm)}
+  .q .q-tier{font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--bronze);margin-bottom:8px;display:flex;align-items:center;gap:7px}
+  .q .q-text{font-size:17.5px;font-weight:700;color:var(--ink);margin-bottom:4px;line-height:1.4}
+  .q .q-help{font-size:13.5px;color:var(--ink-subtle);margin-bottom:16px}
+  .opts{display:flex;flex-direction:column;gap:9px}
+  .opt{display:flex;align-items:flex-start;gap:11px;padding:12px 15px;border:1px solid var(--line);border-radius:8px;cursor:pointer;font-size:15.5px;color:var(--ink-muted);transition:background .12s,border-color .12s}
+  .opt:hover{border-color:var(--bronze);background:#FCFAF5}
+  .opt input{margin-top:3px;accent-color:var(--green);flex:none;width:16px;height:16px}
+  .opt.sel{border-color:var(--green);background:rgba(46,139,87,.06);color:var(--ink)}
+  .scale{display:flex;gap:8px;flex-wrap:wrap}
+  .scale button{flex:1;min-width:54px;font-family:var(--font);font-size:14px;font-weight:700;padding:12px 6px;border:1px solid var(--line);background:var(--surface);color:var(--ink-muted);border-radius:8px;cursor:pointer;transition:all .12s}
+  .scale button:hover{border-color:var(--bronze)}
+  .scale button.sel{background:var(--forest);color:var(--ink-inverse);border-color:var(--forest)}
+  .scale-ends{display:flex;justify-content:space-between;font-size:12px;color:var(--ink-subtle);margin-top:8px}
+  textarea,input[type=text]{width:100%;font-family:var(--font);font-size:15.5px;color:var(--ink);border:1px solid var(--line-strong);border-radius:8px;padding:13px 15px;background:var(--surface);resize:vertical}
+  textarea:focus,input[type=text]:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px rgba(46,139,87,.15)}
+
+  .nav{display:flex;justify-content:space-between;gap:12px;margin-top:24px}
+  .btn{font-family:var(--font);font-size:15px;font-weight:700;border-radius:999px;padding:13px 26px;cursor:pointer;border:none;transition:all .12s;display:inline-flex;align-items:center;gap:10px}
+  .btn.primary{background:var(--bronze);color:var(--forest)}
+  .btn.primary:hover{background:#B9862D}
+  .btn.primary:disabled{opacity:.45;cursor:not-allowed}
+  .btn.ghost{background:transparent;border:1px solid var(--line-strong);color:var(--ink)}
+  .btn.ghost:hover{background:rgba(15,36,25,.05)}
+  .btn .ndl{flex:none}
+
+  /* import-memory box */
+  .import-box{background:var(--sunken);border-radius:8px;padding:22px 24px;margin:14px 0 0;border-left:4px solid var(--green)}
+  .import-box .ib-label{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--green-deep);margin-bottom:8px}
+  .import-box p{font-size:14.5px;color:var(--ink-muted);margin-bottom:12px;max-width:none}
+  .code{position:relative;background:var(--forest);border-radius:8px;padding:16px 18px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:13px;line-height:1.6;color:#DCE8E0;white-space:pre-wrap;margin-bottom:12px}
+  .code .cp{position:absolute;top:10px;right:10px}
+
+  /* result / export */
+  .result{display:none}
+  .result.active{display:block}
+  .result-card{background:var(--surface);border-radius:8px;box-shadow:var(--shadow-md);padding:36px 34px;border-left:4px solid var(--bronze)}
+  .result-card h3{font-size:22px;font-weight:800;letter-spacing:-0.02em;margin-bottom:14px}
+  .result-card p{color:var(--ink-muted);margin-bottom:14px}
+  pre.export{background:var(--sunken);border-radius:8px;padding:18px;font-family:ui-monospace,Menlo,monospace;font-size:12.5px;line-height:1.6;color:var(--ink);white-space:pre-wrap;max-height:340px;overflow:auto;margin:14px 0}
+  .toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(18px);background:var(--forest);color:#fff;font-size:14px;font-weight:600;padding:11px 22px;border-radius:999px;opacity:0;pointer-events:none;transition:.25s;z-index:99;box-shadow:var(--shadow-lg)}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  .swatches{display:flex;max-width:var(--container);margin:56px auto 0;height:14px}
+  .swatches span{flex:1}
+  footer{background:var(--forest);color:rgba(244,249,246,.72);padding:36px 0;margin-top:0}
+  .foot-in{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:center}
+  .foot-lockup{display:flex;align-items:center;gap:10px}
+  .foot-lockup .fl{font-weight:800;font-size:15px;color:var(--ink-inverse)}
+  .foot-lockup .fl .gold{color:var(--bronze-soft)}
+  .foot-note{font-size:13px;color:rgba(244,249,246,.66);width:100%;margin-top:4px}
+
+  @media (max-width:720px){:root{--gutter:22px}.aud-grid{grid-template-columns:1fr}body{font-size:16px}.result-card{padding:26px 22px}}
+</style>
+</head>
+<body>
+
+<div class="rail"><div class="rail-inner"></div></div>
+<div class="wrap topbar">
+  <div class="lockup">
+    <svg width="38" height="38" viewBox="0 0 100 100" aria-label="Mr Hướng Nghiệp">
+      <path d="M84.6 33.2 A38 38 0 1 0 84.6 66.8" fill="none" stroke="#0F2419" stroke-width="7" stroke-linecap="round"/>
+      <path d="M50 50 H76" fill="none" stroke="#0F2419" stroke-width="7" stroke-linecap="round"/>
+      <polygon points="99,50 76,38 76,62" fill="#C9963A"/>
+    </svg>
+    <div class="lk-text"><span class="lk-name">Mr <span class="gold">Hướng Nghiệp</span></span><span class="lk-sub">HAT AI</span></div>
+  </div>
+  <button class="btn-mini" id="btnRestart" type="button">Bắt đầu lại</button>
+</div>
+
+<header class="hero">
+  <div class="wrap hero-in">
+    <div class="kicker">Khảo sát nhu cầu Hướng Nghiệp · Huế &amp; miền Trung</div>
+    <h1>Bạn đang <span class="gold">đứng ở đâu</span> trên hành trình chọn hướng đi?</h1>
+    <p class="lede">Tôi là <strong style="color:#F4F9F6">Huỳnh Anh Thuận</strong> — Chuyên viên Giáo dục và Tư vấn Hướng nghiệp được chứng nhận bởi Hướng nghiệp Sông An. Hiện tại tôi đang xây dựng một chương trình đồng hành hướng nghiệp cho các bạn trẻ và phụ huynh tại Huế và miền Trung, và toàn bộ khảo sát nhu cầu hướng nghiệp để tôi cùng đồng đội để kiến tạo các chương trình hướng nghiệp chuyên sâu và thực tiễn hơn. </p>
+    <p class="lede" style="margin-top:14px">Khảo sát này mất khoảng 3–5 phút. Không có câu trả lời đúng hay sai — chỉ có câu trả lời thật của. Càng thật, chương trình hướng nghiệp càng sát với điều bạn cần.</p>
+    <div class="trust">Hoàn toàn ẩn danh: không hỏi họ tên, trường lớp hay bất kỳ thông tin nhận dạng nào. Câu trả lời chỉ được gửi đi khi bạn tự bấm nút gửi ở cuối. Dữ liệu chỉ dùng để thiết kế chương trình, không dùng cho mục đích nào khác.</div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="progress" id="progress" style="display:none">
+    <div class="seg" data-seg="0"></div><div class="seg" data-seg="1"></div><div class="seg" data-seg="2"></div><div class="seg" data-seg="3"></div><div class="seg" data-seg="4"></div>
+  </div>
+
+  <!-- STEP 0: audience -->
+  <section class="qwrap active" id="step-aud">
+    <div class="step-head">
+      <div class="sec-label"><svg width="14" height="14" viewBox="0 0 100 100"><polygon points="96,50 60,32 60,68" fill="#C9963A"/></svg>Bước 1 · Bạn là ai</div>
+      <h2>Chọn nhóm mô tả đúng bạn nhất</h2>
+      <p class="intro">Mỗi nhóm có bộ câu hỏi riêng, viết đúng cho giai đoạn bạn đang ở.</p>
+    </div>
+    <div class="aud-grid">
+      <button class="aud-card" data-aud="thcs" type="button">
+        <svg class="a-ic" viewBox="0 0 100 100"><polygon points="96,50 60,32 60,68" fill="#C9963A"/></svg>
+        <h3>Học sinh cấp 2 (THCS)</h3>
+        <p>Lớp 6–9, đang khám phá bản thân và nghĩ về hướng đi sau lớp 9</p>
+      </button>
+      <button class="aud-card" data-aud="thpt" type="button">
+        <svg class="a-ic" viewBox="0 0 100 100"><polygon points="96,50 60,32 60,68" fill="#C9963A"/></svg>
+        <h3>Học sinh cấp 3 (THPT)</h3>
+        <p>Lớp 10–12, đang chọn tổ hợp môn, ngành học và nguyện vọng</p>
+      </button>
+      <button class="aud-card" data-aud="sv" type="button">
+        <svg class="a-ic" viewBox="0 0 100 100"><polygon points="96,50 60,32 60,68" fill="#C9963A"/></svg>
+        <h3>Sinh viên</h3>
+        <p>Đang học đại học/cao đẳng, băn khoăn về ngành, việc làm, hướng đi</p>
+      </button>
+      <button class="aud-card" data-aud="ph" type="button">
+        <svg class="a-ic" viewBox="0 0 100 100"><polygon points="96,50 60,32 60,68" fill="#C9963A"/></svg>
+        <h3>Phụ huynh</h3>
+        <p>Đang đồng hành cùng con chọn hướng đi, muốn hiểu con hơn</p>
+      </button>
+      <button class="aud-card" data-aud="dilam" type="button">
+        <svg class="a-ic" viewBox="0 0 100 100"><polygon points="96,50 60,32 60,68" fill="#C9963A"/></svg>
+        <h3>Người đi làm</h3>
+        <p>Đã đi làm nhưng đang cân nhắc chuyển nghề, phát triển hoặc tìm lại hướng đi</p>
+      </button>
+    </div>
+  </section>
+
+  <!-- STEP 1: questions (dynamic) -->
+  <section class="qwrap" id="step-q">
+    <div class="step-head">
+      <div class="sec-label"><svg width="14" height="14" viewBox="0 0 100 100"><polygon points="96,50 60,32 60,68" fill="#C9963A"/></svg><span id="q-groupname">Câu hỏi</span></div>
+      <h2 id="q-blocktitle">—</h2>
+      <p class="intro" id="q-blockintro"></p>
+    </div>
+    <div id="q-container"></div>
+    <div class="nav">
+      <button class="btn ghost" id="btnBack" type="button">← Quay lại</button>
+      <button class="btn primary" id="btnNext" type="button">Tiếp tục
+        <svg class="ndl" width="13" height="13" viewBox="0 0 100 100"><polygon points="96,50 60,32 60,68" fill="#1A3D2B"/></svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- RESULT -->
+  <section class="result" id="step-result">
+    <div class="result-card">
+      <div class="sec-label"><svg width="14" height="14" viewBox="0 0 100 100"><polygon points="96,50 60,32 60,68" fill="#C9963A"/></svg>Hoàn thành</div>
+      <h3>Cảm ơn bạn đã chia sẻ thật lòng</h3>
+      <p>Phản hồi của bạn giúp chương trình hướng nghiệp Huế – miền Trung sát với nhu cầu thật. Bạn có hai cách gửi lại cho tôi:</p>
+      <p><strong>Cách 1 — Gửi trực tiếp (khuyến khích):</strong> bấm nút dưới để gửi câu trả lời ẩn danh về hệ thống. Chỉ mất một giây, bạn không cần làm gì thêm.</p>
+      <div id="sendZone" style="margin-bottom:20px">
+        <button class="btn primary" id="btnSend" type="button">Gửi câu trả lời
+          <svg class="ndl" width="13" height="13" viewBox="0 0 100 100"><polygon points="96,50 60,32 60,68" fill="#1A3D2B"/></svg>
+        </button>
+        <div id="sendStatus" style="font-size:14px;margin-top:12px;color:var(--ink-subtle);display:none"></div>
+      </div>
+      <p style="font-size:15px;color:var(--ink-subtle)"><strong style="color:var(--ink)">Cách 2 — Tự gửi:</strong> nếu không gửi được, hãy sao chép hoặc tải về rồi gửi cho Mr Hướng Nghiệp qua Facebook/Zalo, hoặc email hi@huongnghiepsongan.com.</p>
+      <pre class="export" id="exportOut"></pre>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <button class="btn ghost" id="btnCopyExport" type="button">Sao chép câu trả lời</button>
+        <button class="btn ghost" id="btnDownload" type="button">Tải về tệp .txt</button>
+      </div>
+
+      <div class="import-box" style="margin-top:26px">
+        <div class="ib-label">Tùy chọn · Nếu bạn từng làm trắc nghiệm hoặc hỏi AI về hướng nghiệp</div>
+        <p>Bạn đã từng làm trắc nghiệm Holland, hỏi ChatGPT/Gemini về ngành nghề, hoặc lưu kết quả tư vấn ở đâu đó? Bạn có thể mang các thông tin đó vào để buổi đồng hành sau này hiểu bạn nhanh hơn. Dùng câu lệnh dưới trong công cụ AI bạn hay dùng, rồi lưu kết quả lại để mang theo khi gặp chuyên viên:</p>
+        <div class="code" id="importPrompt">Hãy xuất lại toàn bộ những gì bạn biết về định hướng nghề nghiệp của tôi: sở thích, điểm mạnh, nhóm ngành tôi từng quan tâm, kết quả trắc nghiệm (nếu có), và những băn khoăn tôi từng hỏi. Giữ nguyên lời của tôi ở những chỗ quan trọng. Trình bày gọn theo mục, mỗi ý một dòng.<button class="btn-mini cp" data-copy="importPrompt" type="button" style="background:rgba(244,249,246,.9)">Chép</button></div>
+        <p style="margin:0;font-size:13px;color:var(--ink-subtle)">Thông tin này là của riêng bạn — chỉ mang theo khi bạn muốn, không bắt buộc để tham gia khảo sát.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="swatches" aria-hidden="true">
+  <span style="background:#C3D5CA"></span><span style="background:#5D7A68"></span><span style="background:#0F2419"></span><span style="background:#2E8B57"></span><span style="background:#C9963A"></span><span style="background:#E8B86D"></span>
+</div>
+<footer>
+  <div class="wrap foot-in">
+    <div class="foot-lockup">
+      <svg width="28" height="28" viewBox="0 0 100 100"><path d="M84.6 33.2 A38 38 0 1 0 84.6 66.8" fill="none" stroke="#F4F9F6" stroke-width="7" stroke-linecap="round"/><path d="M50 50 H76" fill="none" stroke="#F4F9F6" stroke-width="7" stroke-linecap="round"/><polygon points="99,50 76,38 76,62" fill="#C9963A"/></svg>
+      <span class="fl">Mr <span class="gold">Hướng Nghiệp</span> · HAT AI</span>
+    </div>
+    <div class="foot-note">Khảo sát nhu cầu hướng nghiệp Huế – miền Trung · Trục nội dung tham chiếu báo cáo tác động Hướng nghiệp Sông An · Ẩn danh, không thu thập thông tin định danh</div>
+  </div>
+</footer>
+
+<div class="toast" id="toast">Đã sao chép</div>
+
+<script>
+(function(){
+  "use strict";
+
+  // ============================================================
+  //  CẤU HÌNH GỬI DỮ LIỆU
+  //  Dán URL Web App của Google Apps Script vào đây sau khi deploy.
+  //  Để trống ("") thì nút "Gửi" tự ẩn, chỉ còn sao chép/tải .txt.
+  // ============================================================
+  var ENDPOINT_URL = "";  // ví dụ: "https://script.google.com/macros/s/AKfy.../exec"
+
+  // ===== KEY POINT trục đo — rút từ báo cáo tác động Sông An =====
+  // 1 Hiểu mình  2 Hiểu nghề  3 Tự tin quyết định  4 Được lắng nghe/không áp đặt  5 Giảm loay hoay/tiết kiệm thời gian
+  // Câu hỏi thiết kế theo tầng Socratic: Làm rõ → Giả định → Bằng chứng → Góc nhìn → Hệ quả → Tự phản chiếu
+
+  var AUD = {
+    thcs:{name:"Học sinh THCS", title:"Cấp 2 — giai đoạn gieo hạt",
+      intro:"Chưa cần chốt nghề. Chỉ cần hiểu đúng em đang nghĩ gì.",
+      blocks:[
+        {tier:"Làm rõ · Hiểu mình",q:"Khi rảnh và được tự chọn, em thích làm việc gì nhất?",help:"Chọn tất cả những gì đúng với em.",type:"multi",opts:["Chế tạo, sửa, lắp ráp đồ vật","Tìm hiểu, đọc, giải câu đố","Vẽ, viết, sáng tạo nội dung","Trò chuyện, giúp đỡ người khác","Tổ chức, dẫn dắt nhóm bạn","Sắp xếp, làm việc gọn gàng theo quy tắc"]},
+        {tier:"Bằng chứng · Hiểu mình",q:"Em có biết điểm mạnh thật sự của mình là gì không?",help:"",type:"scale",ends:["Chưa rõ chút nào","Rất rõ"]},
+        {tier:"Làm rõ · Hiểu nghề",q:"Em biết được khoảng bao nhiêu nghề khác nhau ngoài đời?",help:"Ước lượng thôi cũng được.",type:"single",opts:["Dưới 10 nghề","Khoảng 10–20 nghề","Khoảng 20–40 nghề","Trên 40 nghề"]},
+        {tier:"Giả định · Hiểu nghề",q:"Điều gì khiến em nghĩ một nghề là \"tốt\"?",help:"Chọn tối đa 2 điều quan trọng nhất với em.",type:"multi",max:2,opts:["Kiếm được nhiều tiền","Bố mẹ/mọi người coi trọng","Em thấy vui khi làm","Ổn định, ít rủi ro","Được giúp ích cho người khác"]},
+        {tier:"Hệ quả · Ngã rẽ sau lớp 9",q:"Em có biết sau lớp 9 mình có những lối đi nào không?",help:"",type:"single",opts:["Chỉ biết học lên cấp 3","Biết có cấp 3 và học nghề","Biết khá rõ nhiều lối đi","Chưa nghĩ tới chuyện này"]},
+        {tier:"Được lắng nghe",q:"Khi nói về tương lai, em có thấy người lớn thật sự lắng nghe mình không?",help:"",type:"scale",ends:["Hầu như không","Luôn luôn"]},
+        {tier:"Tự phản chiếu",q:"Điều gì về nghề nghiệp tương lai làm em băn khoăn hoặc lo lắng nhất?",help:"Viết vài dòng, thoải mái như em nghĩ.",type:"text"},
+        {tier:"Bối cảnh · Lớp",q:"Em đang học lớp mấy?",help:"",type:"single",opts:["Lớp 6","Lớp 7","Lớp 8","Lớp 9"]},
+        {tier:"Làm rõ · Nhu cầu 1-1",q:"Em có muốn được một anh/chị chuyên viên trò chuyện riêng để giúp em hiểu bản thân hơn không?",help:"Đây là buổi trò chuyện 1-1, khác với hoạt động cả lớp.",type:"single",opts:["Rất muốn","Cũng muốn thử","Chưa chắc","Chưa cần"]},
+        {tier:"Góc nhìn · Hình thức",q:"Nếu có buổi trò chuyện riêng, em thấy hình thức nào hợp với em hơn?",help:"",type:"single",opts:["Gặp trực tiếp","Online qua video","Cách nào cũng được","Chưa biết"]},
+        {tier:"Bằng chứng · Gia đình sẵn sàng",q:"Theo em biết, gia đình có sẵn sàng đầu tư cho em một buổi tư vấn hướng nghiệp riêng không?",help:"Nếu không rõ, cứ chọn \"Em không rõ\".",type:"single",opts:["Có, gia đình quan tâm việc này","Có thể, nếu thấy hữu ích","Chắc là không","Em không rõ"]}
+      ]},
+    thpt:{name:"Học sinh THPT", title:"Cấp 3 — giai đoạn ra quyết định",
+      intro:"Giai đoạn nhiều ngã rẽ nhất: tổ hợp môn, ngành, trường, nguyện vọng.",
+      blocks:[
+        {tier:"Làm rõ · Vị trí hiện tại",q:"Em đang ở chặng nào của việc chọn hướng?",help:"",type:"single",opts:["Chưa biết bắt đầu từ đâu","Đang khám phá sở thích, năng lực","Đã khoanh được vài nhóm ngành","Đang so sánh ngành/trường cụ thể","Gần như đã quyết định"]},
+        {tier:"Bằng chứng · Hiểu mình",q:"Em hiểu rõ sở thích và năng lực của mình tới đâu?",help:"",type:"scale",ends:["Rất mơ hồ","Rất rõ ràng"]},
+        {tier:"Giả định · Hiểu nghề",q:"Ngành em đang nhắm tới, em biết thực tế người làm nghề đó làm gì hằng ngày không?",help:"",type:"single",opts:["Chưa nhắm ngành nào","Chỉ nghe tên, chưa rõ công việc","Biết đại khái","Biết khá rõ từ người thật việc thật"]},
+        {tier:"Bằng chứng · Nguồn tin",q:"Em thường tìm thông tin ngành/trường ở đâu?",help:"Chọn tất cả nguồn em dùng.",type:"multi",opts:["Hỏi bố mẹ, người thân","Hỏi bạn bè","Mạng xã hội, TikTok, YouTube","Website trường, thông tin tuyển sinh chính thức","Thầy cô, tư vấn ở trường","Trắc nghiệm, tài liệu hướng nghiệp","Gần như chưa tìm ở đâu"]},
+        {tier:"Góc nhìn · Áp lực",q:"Quyết định chọn ngành của em chịu ảnh hưởng nhiều nhất từ đâu?",help:"Chọn tối đa 2.",type:"multi",max:2,opts:["Mong muốn của bố mẹ","Điểm số hiện tại của em","Ngành \"hot\", dễ xin việc","Bạn bè chọn gì","Sở thích thật của em","Cảm giác an toàn, ít rủi ro"]},
+        {tier:"Được lắng nghe · Không áp đặt",q:"Em có cảm thấy được tự do chọn hướng đi theo ý mình không?",help:"",type:"scale",ends:["Bị áp đặt nhiều","Hoàn toàn tự do"]},
+        {tier:"Tự tin quyết định",q:"Nếu phải nộp nguyện vọng ngay tuần này, em tự tin tới đâu?",help:"",type:"scale",ends:["Rất hoang mang","Rất tự tin"]},
+        {tier:"Hệ quả · Nhu cầu hỗ trợ",q:"Em mong được hỗ trợ nhất ở điều gì?",help:"Chọn tối đa 2.",type:"multi",max:2,opts:["Hiểu rõ bản thân hơn","Biết thông tin ngành/trường chính xác","Cách ra quyết định có căn cứ","Nói chuyện với người từng trải","Thuyết phục/đối thoại với bố mẹ","Giảm áp lực, bớt hoang mang"]},
+        {tier:"Tự phản chiếu",q:"Câu hỏi lớn nhất về tương lai mà em chưa có lời đáp là gì?",help:"",type:"text"},
+        {tier:"Bối cảnh · Lớp",q:"Em đang học lớp mấy?",help:"",type:"single",opts:["Lớp 10","Lớp 11","Lớp 12","Đã tốt nghiệp THPT"]},
+        {tier:"Làm rõ · Nhu cầu 1-1",q:"Em có muốn một buổi tư vấn riêng 1-1 với chuyên viên hướng nghiệp không?",help:"Buổi riêng đi sâu vào trường hợp của chính em, khác hoạt động cả lớp.",type:"single",opts:["Rất muốn, càng sớm càng tốt","Muốn, khi gần tới lúc quyết định","Cũng cân nhắc","Chưa thấy cần"]},
+        {tier:"Góc nhìn · Hình thức",q:"Em thấy hình thức nào phù hợp hơn với mình?",help:"",type:"single",opts:["Gặp trực tiếp tại Huế","Online qua video","Kết hợp: gặp trực tiếp buổi đầu, sau đó online","Cách nào cũng được"]},
+        {tier:"Giả định · Giá trị",q:"Theo em, một buổi tư vấn hướng nghiệp 1-1 đáng giá ở chỗ nào nhất?",help:"Chọn tối đa 2.",type:"multi",max:2,opts:["Được nghe phân tích riêng cho trường hợp của mình","Có người khách quan, không phải bố mẹ","Tiết kiệm thời gian mò mẫm","Thông tin chính xác, đáng tin","Bớt hoang mang, tự tin hơn"]},
+        {tier:"Bằng chứng · Kinh phí",q:"Theo em biết, gia đình có thể sẵn sàng chi khoảng bao nhiêu cho một buổi tư vấn 1-1 (60–90 phút)?",help:"Ước lượng thôi. Câu này giúp thiết kế mức phí hợp lý với gia đình ở Huế – miền Trung.",type:"single",opts:["Dưới 200.000đ","200.000 – 500.000đ","500.000 – 1.000.000đ","Trên 1.000.000đ","Gia đình khó chi trả khoản này","Em không rõ"]}
+      ]},
+    sv:{name:"Sinh viên", title:"Sinh viên — giữa ngã ba đường",
+      intro:"Đã chọn một ngành, nhưng câu hỏi về hướng đi thường quay lại.",
+      blocks:[
+        {tier:"Làm rõ · Vị trí",q:"Cảm nhận hiện tại của bạn về ngành đang học?",help:"",type:"single",opts:["Rất hài lòng, đúng hướng","Ổn nhưng còn phân vân","Đang hối tiếc lựa chọn","Muốn chuyển hướng nhưng chưa biết đi đâu","Chưa nghĩ nhiều về việc này"]},
+        {tier:"Giả định · Hiểu mình",q:"Bạn chọn ngành hiện tại chủ yếu vì lý do gì?",help:"Chọn tối đa 2.",type:"multi",max:2,opts:["Đúng sở thích, đam mê","Điểm thi vừa đủ đỗ","Bố mẹ định hướng","Nghe nói dễ xin việc","Chọn theo bạn bè","Không có lựa chọn rõ ràng lúc đó"]},
+        {tier:"Bằng chứng · Hiểu nghề",q:"Bạn hình dung rõ tới đâu về công việc sau khi ra trường?",help:"",type:"scale",ends:["Rất mơ hồ","Rất rõ ràng"]},
+        {tier:"Góc nhìn · Kỹ năng",q:"Điều bạn thấy thiếu nhất để sẵn sàng đi làm là gì?",help:"Chọn tối đa 2.",type:"multi",max:2,opts:["Kỹ năng chuyên môn thực tế","Kinh nghiệm, va chạm thực tế","Hiểu bản thân muốn gì","Mạng lưới quan hệ nghề nghiệp","Kỹ năng tìm việc (CV, phỏng vấn)","Sự tự tin"]},
+        {tier:"Được lắng nghe",q:"Bạn có nơi nào đáng tin để trao đổi về hướng đi nghề nghiệp không?",help:"",type:"single",opts:["Có, và rất hữu ích","Có nhưng chưa đủ tin cậy","Gần như tự loay hoay một mình","Chưa từng tìm"]},
+        {tier:"Tự tin quyết định",q:"Bạn tự tin tới đâu về con đường nghề nghiệp phía trước?",help:"",type:"scale",ends:["Rất hoang mang","Rất vững vàng"]},
+        {tier:"Giảm loay hoay",q:"Bạn đã dành bao lâu để loay hoay với câu hỏi \"mình thật sự hợp nghề gì\"?",help:"",type:"single",opts:["Chưa thật sự nghĩ tới","Vài tháng","Một, hai năm","Nhiều năm rồi vẫn chưa rõ"]},
+        {tier:"Hệ quả · Nhu cầu",q:"Nếu có một buổi đồng hành hướng nghiệp, bạn muốn tập trung vào điều gì?",help:"Chọn tối đa 2.",type:"multi",max:2,opts:["Hiểu lại chính mình","Khám phá nghề phù hợp","Lộ trình từ giờ tới khi ra trường","Chuyển ngành/chuyển hướng","Chuẩn bị đi làm (CV, phỏng vấn)"]},
+        {tier:"Tự phản chiếu",q:"Nếu được hỏi một người đi trước một câu về nghề nghiệp, bạn sẽ hỏi gì?",help:"",type:"text"},
+        {tier:"Bối cảnh · Năm học",q:"Bạn đang là sinh viên năm mấy?",help:"",type:"single",opts:["Năm nhất","Năm hai","Năm ba","Năm cuối","Vừa tốt nghiệp"]},
+        {tier:"Làm rõ · Nhu cầu 1-1",q:"Bạn có muốn một buổi tư vấn hướng nghiệp riêng 1-1 không?",help:"",type:"single",opts:["Rất muốn, đang cần ngay","Muốn, khi sắp xếp được thời gian","Cân nhắc nếu phù hợp chi phí","Chưa thấy cần"]},
+        {tier:"Góc nhìn · Hình thức",q:"Hình thức nào phù hợp với bạn hơn?",help:"",type:"single",opts:["Gặp trực tiếp tại Huế","Online qua video","Kết hợp trực tiếp và online","Cách nào cũng được"]},
+        {tier:"Giả định · Giá trị",q:"Điều gì khiến bạn thấy một buổi tư vấn 1-1 là xứng đáng?",help:"Chọn tối đa 2.",type:"multi",max:2,opts:["Phân tích riêng cho trường hợp của mình","Người tư vấn có chuyên môn được đào tạo bài bản","Có lộ trình hành động cụ thể sau buổi","Tiết kiệm nhiều năm loay hoay","Được lắng nghe thật sự"]},
+        {tier:"Bằng chứng · Kinh phí",q:"Bạn sẵn sàng chi khoảng bao nhiêu cho một buổi tư vấn 1-1 (60–90 phút)?",help:"Câu này giúp thiết kế mức phí phù hợp với sinh viên khu vực miền Trung.",type:"single",opts:["Dưới 200.000đ","200.000 – 500.000đ","500.000 – 1.000.000đ","Trên 1.000.000đ","Chỉ tham gia nếu miễn phí/hỗ trợ học phí","Chưa nghĩ tới"]}
+      ]},
+    ph:{name:"Phụ huynh", title:"Phụ huynh — người đồng hành",
+      intro:"Hiểu con và hiểu chính cách mình đang đồng hành cùng con.",
+      blocks:[
+        {tier:"Làm rõ · Con đang ở đâu",q:"Con anh/chị đang ở giai đoạn nào?",help:"",type:"single",opts:["Cấp 2 (THCS)","Cấp 3 (THPT)","Sinh viên","Vừa ra trường/đi làm"]},
+        {tier:"Bằng chứng · Hiểu con",q:"Anh/chị hiểu rõ sở thích và điểm mạnh thật của con tới đâu?",help:"",type:"scale",ends:["Còn mơ hồ","Rất rõ"]},
+        {tier:"Giả định · Kỳ vọng",q:"Điều anh/chị mong muốn nhất ở nghề nghiệp tương lai của con?",help:"Chọn tối đa 2.",type:"multi",max:2,opts:["Ổn định, an toàn","Thu nhập tốt","Con thật sự hạnh phúc với nghề","Được xã hội coi trọng","Phát huy đúng năng lực của con"]},
+        {tier:"Góc nhìn · Khoảng cách",q:"Anh/chị và con có hay bất đồng về hướng đi tương lai không?",help:"",type:"scale",ends:["Rất hay bất đồng","Rất đồng điệu"]},
+        {tier:"Không áp đặt",q:"Khi con chọn khác mong muốn của mình, anh/chị thường phản ứng thế nào?",help:"Chọn câu gần đúng nhất.",type:"single",opts:["Kiên quyết hướng con theo ý mình","Thuyết phục nhưng để con quyết","Lắng nghe và tôn trọng lựa chọn của con","Chưa gặp tình huống này"]},
+        {tier:"Bằng chứng · Nguồn tin",q:"Anh/chị tìm hiểu thông tin hướng nghiệp cho con ở đâu?",help:"Chọn tất cả.",type:"multi",opts:["Kinh nghiệm bản thân","Hỏi người quen","Mạng xã hội, báo chí","Thông tin tuyển sinh chính thức","Chuyên gia, dịch vụ hướng nghiệp","Gần như chưa tìm hiểu"]},
+        {tier:"Tự tin đồng hành",q:"Anh/chị tự tin tới đâu trong việc đồng hành cùng con chọn hướng?",help:"",type:"scale",ends:["Rất lúng túng","Rất tự tin"]},
+        {tier:"Hệ quả · Nhu cầu",q:"Anh/chị mong được hỗ trợ nhất ở điều gì?",help:"Chọn tối đa 2.",type:"multi",max:2,opts:["Cách hiểu con hơn","Đọc hiểu kết quả trắc nghiệm của con","Thông tin ngành nghề, thị trường đáng tin","Cách trò chuyện, không áp đặt con","Giảm lo lắng của chính mình"]},
+        {tier:"Tự phản chiếu",q:"Điều anh/chị lo lắng nhất khi nghĩ về tương lai của con là gì?",help:"",type:"text"},
+        {tier:"Bối cảnh · Lớp của con",q:"Con anh/chị đang học lớp mấy?",help:"Nếu có nhiều con, chọn theo cháu anh/chị quan tâm nhất lúc này.",type:"single",opts:["Lớp 6–7","Lớp 8–9","Lớp 10–11","Lớp 12","Sinh viên","Đã đi làm"]},
+        {tier:"Làm rõ · Nhu cầu 1-1",q:"Anh/chị có muốn cho con tham gia buổi tư vấn hướng nghiệp riêng 1-1 không?",help:"",type:"single",opts:["Rất muốn, đang tìm nơi uy tín","Muốn, khi con sẵn sàng","Cân nhắc nếu phù hợp chi phí","Chưa thấy cần thiết"]},
+        {tier:"Góc nhìn · Hình thức",q:"Hình thức nào thuận tiện hơn cho gia đình?",help:"",type:"single",opts:["Gặp trực tiếp tại Huế","Online qua video","Kết hợp trực tiếp và online","Có buổi riêng cho phụ huynh cùng tham gia"]},
+        {tier:"Giả định · Giá trị",q:"Điều gì khiến anh/chị tin một buổi tư vấn 1-1 là đáng đầu tư?",help:"Chọn tối đa 2.",type:"multi",max:2,opts:["Chuyên viên được đào tạo bài bản, có chứng nhận","Con được lắng nghe bởi người khách quan","Có kết quả cụ thể sau buổi (báo cáo, lộ trình)","Giúp gia đình bớt tranh cãi về hướng đi","Tiết kiệm cho con nhiều năm loay hoay"]},
+        {tier:"Bằng chứng · Kinh phí",q:"Anh/chị sẵn sàng chi khoảng bao nhiêu cho một buổi tư vấn 1-1 cho con (60–90 phút)?",help:"Câu này giúp thiết kế mức phí phù hợp với gia đình khu vực Huế – miền Trung.",type:"single",opts:["Dưới 300.000đ","300.000 – 700.000đ","700.000 – 1.500.000đ","Trên 1.500.000đ","Chỉ tham gia nếu miễn phí hoặc do trường tổ chức","Chưa nghĩ tới"]},
+        {tier:"Hệ quả · Gói đồng hành",q:"Nếu có gói đồng hành nhiều buổi thay vì một buổi lẻ, anh/chị nghĩ sao?",help:"",type:"single",opts:["Quan tâm, đồng hành lâu dài tốt hơn","Muốn thử một buổi trước rồi tính","Chỉ cần một buổi là đủ","Chưa rõ"]}
+      ]},
+    dilam:{name:"Người đi làm", title:"Người đi làm — tìm lại hoặc đổi hướng",
+      intro:"Đã có công việc, nhưng câu hỏi \"đây có phải nghề của mình\" vẫn còn đó.",
+      blocks:[
+        {tier:"Làm rõ · Vị trí hiện tại",q:"Cảm nhận hiện tại của bạn về công việc đang làm?",help:"",type:"single",opts:["Hài lòng, muốn phát triển sâu hơn","Ổn nhưng thấy chững lại, mất động lực","Đang cân nhắc chuyển nghề","Muốn đổi nhưng chưa biết đi đâu","Đang thất nghiệp/khoảng nghỉ, tìm hướng mới"]},
+        {tier:"Bối cảnh · Kinh nghiệm",q:"Bạn đã đi làm được bao lâu?",help:"",type:"single",opts:["Dưới 2 năm","2–5 năm","5–10 năm","Trên 10 năm"]},
+        {tier:"Giả định · Lý do",q:"Điều gì thôi thúc bạn nghĩ đến chuyện thay đổi hướng đi nhất?",help:"Chọn tối đa 2.",type:"multi",max:2,opts:["Công việc không còn ý nghĩa với mình","Thu nhập chưa như mong muốn","Không thấy cơ hội thăng tiến","Nghề hiện tại không hợp tính cách/giá trị","Muốn thử lĩnh vực mình thật sự thích","Áp lực, kiệt sức"]},
+        {tier:"Bằng chứng · Hiểu mình",q:"Bạn hiểu rõ điểm mạnh và giá trị nghề nghiệp thật của mình tới đâu?",help:"",type:"scale",ends:["Còn mơ hồ","Rất rõ"]},
+        {tier:"Góc nhìn · Rào cản",q:"Điều gì cản trở bạn nhất khi muốn thay đổi?",help:"Chọn tối đa 2.",type:"multi",max:2,opts:["Sợ mất thu nhập, rủi ro tài chính","Trách nhiệm gia đình","Không biết mình hợp gì khác","Tiếc thời gian/kinh nghiệm đã đầu tư","Tuổi tác, sợ bắt đầu lại","Thiếu người định hướng đáng tin"]},
+        {tier:"Được lắng nghe",q:"Bạn có nơi nào đáng tin để trao đổi về hướng đi nghề nghiệp không?",help:"",type:"single",opts:["Có, và hữu ích","Có nhưng chưa đủ tin cậy","Gần như tự loay hoay một mình","Chưa từng tìm"]},
+        {tier:"Tự tin quyết định",q:"Bạn tự tin tới đâu về bước đi nghề nghiệp tiếp theo của mình?",help:"",type:"scale",ends:["Rất hoang mang","Rất vững vàng"]},
+        {tier:"Giảm loay hoay",q:"Bạn đã trăn trở với câu hỏi về hướng đi nghề nghiệp bao lâu rồi?",help:"",type:"single",opts:["Mới gần đây","Vài tháng","Một, hai năm","Nhiều năm rồi vẫn chưa dứt điểm"]},
+        {tier:"Tự phản chiếu",q:"Nếu thay đổi được một điều trong sự nghiệp ngay bây giờ, bạn muốn thay đổi gì?",help:"",type:"text"},
+        {tier:"Làm rõ · Nhu cầu 1-1",q:"Bạn có muốn một buổi tư vấn hướng nghiệp riêng 1-1 để gỡ rối không?",help:"",type:"single",opts:["Rất muốn, đang cần ngay","Muốn, khi sắp xếp được","Cân nhắc nếu phù hợp chi phí","Chưa thấy cần"]},
+        {tier:"Góc nhìn · Hình thức",q:"Hình thức nào phù hợp với bạn hơn?",help:"",type:"single",opts:["Gặp trực tiếp tại Huế","Online qua video","Kết hợp trực tiếp và online","Cách nào cũng được"]},
+        {tier:"Giả định · Giá trị",q:"Điều gì khiến bạn thấy một buổi tư vấn 1-1 là xứng đáng?",help:"Chọn tối đa 2.",type:"multi",max:2,opts:["Phân tích riêng cho hoàn cảnh của mình","Người tư vấn có chuyên môn, khách quan","Có lộ trình hành động rõ ràng sau buổi","Rút ngắn nhiều năm loay hoay","Được nhìn lại bản thân một cách hệ thống"]},
+        {tier:"Bằng chứng · Kinh phí",q:"Bạn sẵn sàng chi khoảng bao nhiêu cho một buổi tư vấn 1-1 (60–90 phút)?",help:"Câu này giúp thiết kế mức phí phù hợp với người đi làm khu vực miền Trung.",type:"single",opts:["Dưới 300.000đ","300.000 – 700.000đ","700.000 – 1.500.000đ","1.500.000 – 3.000.000đ","Trên 3.000.000đ","Chưa nghĩ tới"]},
+        {tier:"Hệ quả · Gói đồng hành",q:"Bạn quan tâm hình thức đồng hành nào hơn?",help:"",type:"single",opts:["Một buổi gỡ rối nhanh","Gói vài buổi theo một lộ trình","Đồng hành dài hạn (coaching định kỳ)","Chưa rõ"]}
+      ]}
+  };
+
+  var state={aud:null,answers:{},idx:0};
+  var $=function(s){return document.querySelector(s)};
+  var progress=$("#progress");
+
+  function toast(m){var t=$("#toast");t.textContent=m;t.classList.add("show");setTimeout(function(){t.classList.remove("show")},1700)}
+
+  // audience pick
+  document.querySelectorAll(".aud-card").forEach(function(c){
+    c.addEventListener("click",function(){
+      state.aud=c.getAttribute("data-aud");state.answers={};state.idx=0;
+      $("#step-aud").classList.remove("active");
+      $("#step-q").classList.add("active");
+      progress.style.display="flex";
+      renderBlock();
+      window.scrollTo({top:0,behavior:"smooth"});
+    });
+  });
+
+  function totalBlocks(){return AUD[state.aud].blocks.length}
+
+  function renderProgress(){
+    // map current idx over 5 segments
+    var segs=document.querySelectorAll(".progress .seg");
+    var ratio=state.idx/totalBlocks();
+    segs.forEach(function(s,i){
+      s.classList.remove("on","done");
+      if(i < Math.floor(ratio*5)) s.classList.add("done");
+      else if(i===Math.floor(ratio*5)) s.classList.add("on");
+    });
+  }
+
+  function renderBlock(){
+    var A=AUD[state.aud], b=A.blocks[state.idx];
+    $("#q-groupname").textContent=A.name+" · Câu "+(state.idx+1)+"/"+totalBlocks();
+    $("#q-blocktitle").textContent=A.title;
+    $("#q-blockintro").textContent=A.intro;
+    var box=$("#q-container");box.innerHTML="";
+    var el=document.createElement("div");el.className="q";
+    var help=b.help?'<div class="q-help">'+b.help+'</div>':'';
+    var body="";
+    var key="q"+state.idx;
+    var cur=state.answers[key];
+
+    if(b.type==="single"||b.type==="multi"){
+      body='<div class="opts">'+b.opts.map(function(o,i){
+        var sel=false;
+        if(b.type==="single") sel=(cur===o);
+        else sel=Array.isArray(cur)&&cur.indexOf(o)>-1;
+        return '<label class="opt'+(sel?' sel':'')+'"><input type="'+(b.type==="single"?"radio":"checkbox")+'" name="'+key+'" value="'+o.replace(/"/g,'&quot;')+'"'+(sel?' checked':'')+'><span>'+o+'</span></label>';
+      }).join("")+'</div>';
+    } else if(b.type==="scale"){
+      var n=[1,2,3,4,5];
+      body='<div class="scale">'+n.map(function(v){return '<button type="button" data-v="'+v+'"'+(cur==v?' class="sel"':'')+'>'+v+'</button>'}).join("")+'</div><div class="scale-ends"><span>'+b.ends[0]+'</span><span>'+b.ends[1]+'</span></div>';
+    } else if(b.type==="text"){
+      body='<textarea rows="4" placeholder="Câu trả lời của bạn...">'+(cur?cur.replace(/</g,"&lt;"):"")+'</textarea>';
+    }
+    el.innerHTML='<div class="q-tier"><svg width="11" height="11" viewBox="0 0 100 100"><polygon points="96,50 60,32 60,68" fill="#C9963A"/></svg>'+b.tier+'</div><div class="q-text">'+b.q+'</div>'+help+body;
+    box.appendChild(el);
+
+    // wire inputs
+    if(b.type==="single"){
+      el.querySelectorAll(".opt").forEach(function(opt){
+        opt.addEventListener("click",function(){
+          state.answers[key]=opt.querySelector("input").value;
+          el.querySelectorAll(".opt").forEach(function(o){o.classList.remove("sel")});
+          opt.classList.add("sel");opt.querySelector("input").checked=true;
+        });
+      });
+    } else if(b.type==="multi"){
+      el.querySelectorAll(".opt").forEach(function(opt){
+        opt.addEventListener("click",function(e){
+          if(e.target.tagName!=="INPUT"){var ip=opt.querySelector("input");ip.checked=!ip.checked;}
+          var arr=[];el.querySelectorAll(".opt input:checked").forEach(function(i){arr.push(i.value)});
+          if(b.max&&arr.length>b.max){opt.querySelector("input").checked=false;toast("Chọn tối đa "+b.max+" mục");return}
+          state.answers[key]=arr;
+          el.querySelectorAll(".opt").forEach(function(o){o.classList.toggle("sel",o.querySelector("input").checked)});
+        });
+      });
+    } else if(b.type==="scale"){
+      el.querySelectorAll(".scale button").forEach(function(btn){
+        btn.addEventListener("click",function(){
+          state.answers[key]=btn.getAttribute("data-v");
+          el.querySelectorAll(".scale button").forEach(function(x){x.classList.remove("sel")});
+          btn.classList.add("sel");
+        });
+      });
+    } else if(b.type==="text"){
+      el.querySelector("textarea").addEventListener("input",function(){state.answers[key]=this.value});
+    }
+
+    $("#btnBack").textContent = state.idx===0?"← Đổi nhóm":"← Quay lại";
+    $("#btnNext").innerHTML = state.idx===totalBlocks()-1?'Xem kết quả <svg class="ndl" width="13" height="13" viewBox="0 0 100 100"><polygon points="96,50 60,32 60,68" fill="#1A3D2B"/></svg>':'Tiếp tục <svg class="ndl" width="13" height="13" viewBox="0 0 100 100"><polygon points="96,50 60,32 60,68" fill="#1A3D2B"/></svg>';
+    renderProgress();
+  }
+
+  $("#btnBack").addEventListener("click",function(){
+    if(state.idx===0){
+      $("#step-q").classList.remove("active");
+      $("#step-aud").classList.add("active");
+      progress.style.display="none";
+      window.scrollTo({top:0,behavior:"smooth"});
+    } else {state.idx--;renderBlock();window.scrollTo({top:0,behavior:"smooth"})}
+  });
+
+  $("#btnNext").addEventListener("click",function(){
+    if(state.idx<totalBlocks()-1){state.idx++;renderBlock();window.scrollTo({top:0,behavior:"smooth"})}
+    else{showResult()}
+  });
+
+  function buildExport(){
+    var A=AUD[state.aud];
+    var lines=[];
+    lines.push("KHẢO SÁT NHU CẦU HƯỚNG NGHIỆP — HUẾ & MIỀN TRUNG");
+    lines.push("Nhóm đối tượng: "+A.name);
+    lines.push("Thời điểm: "+new Date().toLocaleString("vi-VN"));
+    lines.push("(Ẩn danh — không chứa thông tin định danh)");
+    lines.push("------------------------------------------------");
+    A.blocks.forEach(function(b,i){
+      var v=state.answers["q"+i];
+      var ans;
+      if(Array.isArray(v)) ans=v.length?v.join("; "):"(không chọn)";
+      else if(b.type==="scale") ans=v?v+"/5 ("+b.ends[0]+" → "+b.ends[1]+")":"(chưa trả lời)";
+      else ans=v?v:"(chưa trả lời)";
+      lines.push((i+1)+". ["+b.tier+"]");
+      lines.push("   "+b.q);
+      lines.push("   → "+ans);
+    });
+    lines.push("------------------------------------------------");
+    lines.push("Trục phân tích (tham chiếu báo cáo tác động Sông An):");
+    lines.push("Hiểu mình · Hiểu nghề · Tự tin quyết định · Được lắng nghe/không áp đặt · Giảm loay hoay");
+    return lines.join("\n");
+  }
+
+  // Payload có cấu trúc để Apps Script phân tích được (không chỉ text thô)
+  function buildPayload(){
+    var A=AUD[state.aud];
+    var rows=A.blocks.map(function(b,i){
+      var v=state.answers["q"+i];
+      return {
+        tier:b.tier,
+        question:b.q,
+        type:b.type,
+        answer: Array.isArray(v)?v.join("; "):(v!=null?String(v):""),
+        scaleMax: b.type==="scale"?5:null
+      };
+    });
+    return {
+      audience: state.aud,
+      audienceName: A.name,
+      timestamp: new Date().toISOString(),
+      answers: rows,
+      // trục đo tham chiếu báo cáo tác động Sông An
+      axes:["Hiểu mình","Hiểu nghề","Tự tin quyết định","Được lắng nghe","Giảm loay hoay"]
+    };
+  }
+
+  function showResult(){
+    $("#step-q").classList.remove("active");
+    progress.style.display="none";
+    document.querySelectorAll(".progress .seg").forEach(function(s){s.classList.remove("on");s.classList.add("done")});
+    $("#step-result").classList.add("active");
+    $("#exportOut").textContent=buildExport();
+    // ẩn nút gửi nếu chưa cấu hình endpoint
+    if(!ENDPOINT_URL){ $("#sendZone").style.display="none"; }
+    window.scrollTo({top:0,behavior:"smooth"});
+  }
+
+  // Gửi POST về Apps Script. Dùng 'text/plain' để tránh preflight CORS.
+  var sent=false;
+  $("#btnSend") && $("#btnSend").addEventListener("click",function(){
+    if(sent) return;
+    if(!ENDPOINT_URL){ toast("Chưa cấu hình nơi nhận"); return; }
+    var btn=$("#btnSend"), st=$("#sendStatus");
+    btn.disabled=true; btn.style.opacity=".55";
+    st.style.display="block"; st.textContent="Đang gửi...";
+    fetch(ENDPOINT_URL,{
+      method:"POST",
+      mode:"no-cors",
+      headers:{"Content-Type":"text/plain;charset=utf-8"},
+      body:JSON.stringify(buildPayload())
+    }).then(function(){
+      sent=true;
+      st.style.color="var(--green-deep)";
+      st.innerHTML="✓ Đã gửi. Cảm ơn bạn rất nhiều!";
+      btn.style.display="none";
+      toast("Đã gửi câu trả lời");
+    }).catch(function(){
+      btn.disabled=false; btn.style.opacity="1";
+      st.style.color="#B4552D";
+      st.textContent="Chưa gửi được. Vui lòng dùng Cách 2 bên dưới để sao chép và gửi giúp mình.";
+    });
+  });
+
+  // copy helpers
+  function copy(text,cb){
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(cb).catch(function(){fallback(text);cb()})}
+    else{fallback(text);cb()}
+  }
+  function fallback(t){var ta=document.createElement("textarea");ta.value=t;ta.style.position="fixed";ta.style.opacity="0";document.body.appendChild(ta);ta.select();try{document.execCommand("copy")}catch(e){}document.body.removeChild(ta)}
+
+  $("#btnCopyExport").addEventListener("click",function(){copy(buildExport(),function(){toast("Đã sao chép câu trả lời")})});
+  $("#btnDownload").addEventListener("click",function(){
+    var blob=new Blob([buildExport()],{type:"text/plain;charset=utf-8"});
+    var a=document.createElement("a");a.href=URL.createObjectURL(blob);
+    a.download="khao-sat-huong-nghiep.txt";a.click();URL.revokeObjectURL(a.href);
+    toast("Đã tải tệp .txt");
+  });
+  document.querySelectorAll("[data-copy]").forEach(function(btn){
+    btn.addEventListener("click",function(){
+      var box=document.getElementById(btn.getAttribute("data-copy"));
+      var txt=box.childNodes[0].nodeValue||box.textContent;
+      copy(txt.trim(),function(){toast("Đã sao chép câu lệnh")});
+    });
+  });
+
+  $("#btnRestart").addEventListener("click",function(){
+    state={aud:null,answers:{},idx:0};
+    $("#step-result").classList.remove("active");
+    $("#step-q").classList.remove("active");
+    $("#step-aud").classList.add("active");
+    progress.style.display="none";
+    window.scrollTo({top:0,behavior:"smooth"});
+  });
+})();
+</script>
+</body>
+</html>
